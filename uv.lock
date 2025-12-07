@@ -1,0 +1,31 @@
+version = 1
+revision = 3
+requires-python = ">=3.11"
+
+[manifest]
+members = [
+    "ai-api",
+    "chat-api",
+    "oss-apis",
+    "tickets-api",
+]
+
+[[package]]
+name = "ai-api"
+version = "0.1.0"
+source = { editable = "src/ai_api" }
+
+[[package]]
+name = "chat-api"
+version = "0.1.0"
+source = { editable = "src/chat_api" }
+
+[[package]]
+name = "oss-apis"
+version = "0.1.0"
+source = { virtual = "." }
+
+[[package]]
+name = "tickets-api"
+version = "0.1.0"
+source = { editable = "src/tickets_api" }
