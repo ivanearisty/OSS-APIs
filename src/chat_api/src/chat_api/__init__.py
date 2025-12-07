@@ -1,11 +1,14 @@
+"""Abstract interfaces for Chat APIs."""
+
 from abc import ABC, abstractmethod
-from typing import List, Optional
+
 
 class Message(ABC):
-    """
-    Abstract representation of a chat message.
+    """Abstract representation of a chat message.
+
     Students must implement this to wrap their platform-specific message objects.
     """
+
     @property
     @abstractmethod
     def id(self) -> str:
@@ -25,28 +28,22 @@ class Message(ABC):
         raise NotImplementedError
 
 class ChatInterface(ABC):
-    """
-    A minimal interface for sending and receiving messages.
-    """
+    """A minimal interface for sending and receiving messages."""
 
     @abstractmethod
     def send_message(self, channel_id: str, content: str) -> bool:
-        """
-        Sends a message to a specific destination (channel/thread).
-        Returns True if successful.
+        """Send a message to a specific destination (channel/thread).
+
+        :return: True if the message was sent successfully, False otherwise.
         """
         raise NotImplementedError
 
     @abstractmethod
-    def get_messages(self, channel_id: str, limit: int = 10) -> List[Message]:
-        """
-        Reads the last N messages from a destination.
-        """
+    def get_messages(self, channel_id: str, limit: int = 10) -> list[Message]:
+        """Read the last N messages from a destination."""
         raise NotImplementedError
 
     @abstractmethod
     def delete_message(self, channel_id: str, message_id: str) -> bool:
-        """
-        Deletes a specific message. Returns True if successful.
-        """
+        """Delete a specific message. Returns True if successful."""
         raise NotImplementedError
